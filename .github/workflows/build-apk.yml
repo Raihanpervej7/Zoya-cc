@@ -56,9 +56,10 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
-      - name: Accept Android SDK Licenses
+      - name: Accept Android SDK Licenses & Install API 36
         run: |
           yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses 2>/dev/null || true
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-36" || true
 
       - name: Grant Execute Permission to Gradlew
         run: chmod +x android/gradlew
